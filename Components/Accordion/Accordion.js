@@ -72,7 +72,7 @@ const Accordion = () => {
           }}
           disabled={!submitEnable}
         >
-          Submit
+          Submit 
         </button>
       </div>
     </>
