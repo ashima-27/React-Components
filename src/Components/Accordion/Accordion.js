@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Accordion = () => {
+const Accordion = ({ title }) => {
   const [expandedIndex, setExpandedIndex] = useState(null);
   const [submitEnable, setSubmitEnable] = useState(false);
   const [checkedItems, setCheckedItems] = useState([]);
@@ -9,12 +9,12 @@ const Accordion = () => {
     {
       id: '1',
       heading: 'Accordion 1',
-      desc: 'I am  First Accordion',
+      desc: 'I am First Accordion',
     },
     {
       id: '2',
       heading: 'Accordion 2',
-      desc: 'I am Second Accordion ',
+      desc: 'I am Second Accordion',
     },
     {
       id: '3',
@@ -39,8 +39,8 @@ const Accordion = () => {
   };
 
   return (
-    <>
-      <h1>Accordion with Checkboxes</h1>
+    <div style={styles.card}>
+      <h2 style={styles.cardTitle}>{title}</h2>
       <div>
         {content.map((data, index) => (
           <div key={data.id} style={styles.accordionItem}>
@@ -52,12 +52,12 @@ const Accordion = () => {
                   onChange={() => handleCheck(index)}
                 />
               </label>
-              <h1 style={styles.heading} onClick={() => handleExpand(index)}>
+              <h3 style={styles.heading} onClick={() => handleExpand(index)}>
                 {data.heading}
-              </h1>
-              <button style={styles.expandButton} onClick={() => handleExpand(index)}>
-                {expandedIndex === index ? '▲' : '▼'}
-              </button>
+                <button style={styles.expandButton} onClick={() => handleExpand(index)}>
+                  {expandedIndex === index ? '▲' : '▼'}
+                </button>
+              </h3>
             </div>
             {expandedIndex === index && <p style={styles.description}>{data.desc}</p>}
           </div>
@@ -67,19 +67,32 @@ const Accordion = () => {
         <button
           style={{
             ...styles.submitButton,
-            backgroundColor: submitEnable ? 'green' : 'gray',
+            backgroundColor: submitEnable ? '#4CAF50' : '#808080',
             cursor: submitEnable ? 'pointer' : 'not-allowed',
           }}
           disabled={!submitEnable}
         >
-          Submit 
+          Submit
         </button>
       </div>
-    </>
+    </div>
   );
 };
 
 const styles = {
+  card: {
+    border: '1px solid #ccc',
+    borderRadius: '4px',
+    margin: '20px',
+    padding: '16px',
+    backgroundColor: '#f9f9f9',
+  
+  },
+  cardTitle: {
+    fontSize: '20px',
+    marginBottom: '12px',
+    color: '#333',
+  },
   accordionItem: {
     border: '1px solid #ccc',
     borderRadius: '4px',
@@ -90,31 +103,37 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
+    marginBottom: '8px',
   },
   checkboxLabel: {
-    marginRight: '8px',
+    marginRight: '12px',
   },
   heading: {
-    display: 'inline',
+    display: 'flex',
+    alignItems: 'center',
     cursor: 'pointer',
-    flexGrow: 1,
+    fontSize: '18px',
+    color: '#333',
   },
   expandButton: {
     background: 'none',
     border: 'none',
     cursor: 'pointer',
     fontSize: '20px',
+    marginLeft: '8px',
+    color: '#333',
   },
   description: {
     marginTop: '8px',
+    color: '#555',
   },
   submitButton: {
     color: 'white',
-    padding: '5px',
-    margin: '3px',
+    padding: '10px 20px',
+    margin: '10px 0',
     border: 'none',
     borderRadius: '4px',
-    
+    fontSize: '16px',
   },
 };
 
