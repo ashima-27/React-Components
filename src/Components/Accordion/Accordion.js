@@ -54,7 +54,7 @@ const Accordion = ({ title }) => {
               </label>
               <h3 style={styles.heading} onClick={() => handleExpand(index)}>
                 {data.heading}
-                <button style={styles.expandButton} onClick={() => handleExpand(index)}>
+                <button style={styles.expandButton} >
                   {expandedIndex === index ? '▲' : '▼'}
                 </button>
               </h3>
