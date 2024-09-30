@@ -50,6 +50,7 @@ const Accordion = ({ title }) => {
   return (
     <div style={styles.card}>
       <h2 style={styles.cardTitle}>{title}</h2>
+      <p>This accordion is a collapsible UI element with checkboxes, where the "Submit" button is enabled only after all sections are expanded and checked, offering a clean and interactive user experience.</p>
       <div>
         {content.map((data, index) => (
           <div key={data.id} style={styles.accordionItem}>
@@ -103,6 +104,7 @@ const styles = {
     maxWidth: '800px',
     margin: '20px auto',
     color: '#1b2436',
+    width: '100%', // Ensures the card takes full width on small screens
   },
   cardTitle: {
     fontSize: '24px',
@@ -132,8 +134,7 @@ const styles = {
     cursor: 'pointer',
     fontSize: '18px',
     color: '#1b2436',
-   
-    gap:'6px'
+    gap: '6px',
   },
   expandButton: {
     background: 'rgba(255, 255, 255, 0.2)',
@@ -144,13 +145,12 @@ const styles = {
     color: '#1b2436',
     padding: '5px',
     transition: 'background 0.3s ease',
-   
   },
   description: {
     marginTop: '8px',
     color: '#1b2436',
     fontSize: '14px',
-    textAlign:'start'
+    textAlign: 'start',
   },
   submitButton: {
     display: 'block',
@@ -162,6 +162,39 @@ const styles = {
     color: '#fff',
     marginTop: '20px',
     transition: 'background-color 0.3s ease',
+  },
+  '@media (max-width: 768px)': {
+    cardTitle: {
+      fontSize: '20px',
+    },
+    heading: {
+      fontSize: '16px',
+    },
+    accordionItem: {
+      padding: '12px',
+    },
+    submitButton: {
+      padding: '8px 0',
+      fontSize: '14px',
+    },
+  },
+  '@media (max-width: 480px)': {
+    cardTitle: {
+      fontSize: '18px',
+    },
+    heading: {
+      fontSize: '14px',
+    },
+    accordionItem: {
+      padding: '8px',
+    },
+    submitButton: {
+      padding: '6px 0',
+      fontSize: '12px',
+    },
+    card:{
+      margin:'10px'
+    }
   },
 };
 
